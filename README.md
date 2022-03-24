@@ -9,7 +9,7 @@ _Checklist_
 
 This project is for **educational** porpuses only. Pull request are welcome, but priority for project authors! Thank you for your cooperation!
 
-Site published at: https://linajja.github.io/Node-darbas/
+Site published at: https://linajja.github.io/Checklist/
 
 Design: [Node-darbas-1]
 

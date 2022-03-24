@@ -7,6 +7,7 @@ body {
     max-width: 600px;
     margin-top: 4rem;
     padding: 2rem;
+    border-radius: 15px;
 }
 
 .list-heading {
@@ -19,4 +20,11 @@ body {
 
 .messages.show {
     display: block;
+}
+
+.mark-done {
+    text-decoration: none;
+}
+.mark-done.done {
+    text-decoration: line-through;
 }

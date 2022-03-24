@@ -1,0 +1,22 @@
+body {
+    background: rgb(176, 219, 255);
+}
+
+.todo-container {
+    background: #fff;
+    max-width: 600px;
+    margin-top: 4rem;
+    padding: 2rem;
+}
+
+.list-heading {
+    text-align: center;
+}
+
+.messages {
+    display: none;
+}
+
+.messages.show {
+    display: block;
+}

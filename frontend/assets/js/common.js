@@ -11,7 +11,7 @@ const getData = () => {
                 resp.data.forEach(value => {
                     let done = value.done ? 'done' : ''
                     html += `<li data-id="${value.id}">
-                    <input type="checkbox" class="mass-delete">
+                    <input type="checkbox" class="mass-delete"/>
                     <a class ="mark-done ${done}">${value.task}</a>
                     <a class="btn btn-primary delete-todo">Trinti</a>
                     </li>`
@@ -27,7 +27,7 @@ const getData = () => {
 
                     element.addEventListener('click', () => {
 
-                        fetch(url + '/mark-done' + id, {
+                        fetch(url + '/mark-done/' + id, {
                             method: 'PUT'
                         })
                             .then(resp => resp.json())
@@ -45,7 +45,7 @@ const getData = () => {
 
                     element.addEventListener('click', () => {
 
-                        fetch(url + '/delete-todo' + id, {
+                        fetch(url + '/delete-todo/' + id, {
                             method: 'DELETE'
                         })
                             .then(resp => resp.json())
@@ -108,7 +108,6 @@ document.querySelector('#mass-delete').addEventListener('click', () => {
     })
         .then(resp => resp.json())
         .then(resp => {
-
             getData()
         })
 })

@@ -123,7 +123,7 @@ app.delete('/mass-delete', (req, res) => {
 
 
 
-app.delete('/mark-done/:id', (req, res) => {
+app.put('/mark-done/:id', (req, res) => {
     let id = req.params.id
 
     readFile(database, 'utf8', (err, data) => {

@@ -26,6 +26,28 @@ app.get('/', (req, res) => {
 
 })
 
+app.get('/:id', (req, res) => {
+    let id = req.params.id
+
+    readFile(database, 'utf8', (err, data) => {
+        if (err) {
+            res.json({ status: 'failed', message: 'Nepavyko perskaityti failo' })
+        } else {
+            data = JSON.parse(data)
+
+            const jsonId = data.findIndex((el) => el.id == id)
+
+            if (jsonId === -1) {
+                res.json({ status: 'failed', message: 'Nepavyko rasti tokio elemento' })
+                return
+            }
+
+            res.json({ status: 'success', data: data[jsonId] })
+        }
+    })
+
+})
+
 app.post('/add-todo', (req, res) => {
     let task = req.body.task
 
@@ -96,16 +118,16 @@ app.delete('/mass-delete', (req, res) => {
             res.json({ status: 'failed', message: 'Nepavyko perskaityti failo' })
             return
         }
-        //Issifruojame json informacija atgal i javascript masyva
-        let json = JSON.parse(data)
 
+        let json = JSON.parse(data)
         let dataArray = []
         json.forEach((value, index) => {
-
             if (!ids.includes(value.id.toString())) {
                 dataArray.push(value)
             }
         })
+
+        //console.log(json)
 
         let jsonString = JSON.stringify(dataArray)
 
@@ -118,10 +140,8 @@ app.delete('/mass-delete', (req, res) => {
         })
 
     })
+
 })
-
-
-
 
 app.put('/mark-done/:id', (req, res) => {
     let id = req.params.id
@@ -141,7 +161,7 @@ app.put('/mark-done/:id', (req, res) => {
             return
         }
 
-        json[jsonId].done = true;
+        json[jsonId].done = json[jsonId].done ? false : true
 
         let jsonString = JSON.stringify(json)
 
@@ -149,13 +169,51 @@ app.put('/mark-done/:id', (req, res) => {
             if (err) {
                 res.json({ status: 'failed', message: 'Nepavyko įrašyti failo' })
             } else {
-                res.json({ status: 'success', message: 'Įrašas sėkmingai ištrintas' })
+                res.json({ status: 'success', message: 'Užduotis atlikta' })
             }
         })
 
     })
 })
 
+app.put('/edit-todo/:id', (req, res) => {
+    let id = req.params.id
+    let task = req.body.task
+
+    if (task === undefined) {
+        res.json({ status: 'failed', message: 'Neįvesta jokia reikšmė' })
+        return
+    }
+
+    readFile(database, 'utf8', (err, data) => {
+        if (err) {
+            res.json({ status: 'failed', message: 'Nepavyko perskaityti failo' })
+            return
+        }
+        //Issifruojame json informacija atgal i javascript masyva
+        let json = JSON.parse(data)
+
+        const jsonId = json.findIndex((el) => el.id == id)
+
+        if (jsonId === -1) {
+            res.json({ status: 'failed', message: 'Nepavyko rasti tokio elemento' })
+            return
+        }
+
+        json[jsonId].task = task
+
+        let jsonString = JSON.stringify(json)
+
+        writeFile(database, jsonString, 'utf8', (err) => {
+            if (err) {
+                res.json({ status: 'failed', message: 'Nepavyko įrašyti failo' })
+            } else {
+                res.json({ status: 'success', message: 'Įrašas sėkmingai atnaujintas' })
+            }
+        })
+
+    })
+})
 
 app.listen(5001, () => {
     console.log('Serveris veikia')

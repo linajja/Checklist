@@ -16,11 +16,11 @@
             <div class="list-heading">
                 <h1>TodoList</h1>
             </div>
-            <div class="alert alert-danger messages"></div>
+            <div class="alert messages"></div>
             <div class="add-new">
                 <div class="input-group mb-3">
-                    <input type="text" id="new-todo" class="form-control" placeholder="Ką padaryti?">
-                    <button class="btn btn-outline-secondary" type="button" id="add-new-todo">Pridėti</button>
+                    <input type="text" id="new-todo" class="form-control" placeholder="Ką padaryti?" data-mode="add">
+                    <button class="btn btn-outline-secondary" type="button" id="add-new-todo" data-edit-label="Redaguoti" data-add-label="Pridėti">Pridėti</button>
                 </div>
             </div>
             <div id="todos"></div>

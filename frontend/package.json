@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "dead-server": "^1.0.6"
+  },
+  "dependencies": {
+    "cli-progress": "^3.10.0"
   }
 }

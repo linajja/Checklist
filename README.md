@@ -22,6 +22,11 @@ Design: [Node-darbas-1]
 -   JS
 -   Nodemon
 
+## Instalation instruction
+
+Frontend and backend sections must be installed separately
+`$npm install`
+
 ## Authors
 
 Lina: [Github](https://github.com/linajja)

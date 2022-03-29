@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
             res.json({ status: 'success', data })
         }
     })
-
 })
 
 app.post('/add-todo', (req, res) => {
@@ -147,14 +146,48 @@ app.put('/mark-done/:id', (req, res) => {
 
         writeFile(database, jsonString, 'utf8', (err) => {
             if (err) {
-                res.json({ status: 'failed', message: 'Nepavyko įrašyti failo' })
+                res.json({ status: 'failed', message: 'Nepavyko pabraukti failo' })
             } else {
-                res.json({ status: 'success', message: 'Įrašas sėkmingai ištrintas' })
+                res.json({ status: 'success', message: 'Įrašas sėkmingai pabrauktas' })
             }
         })
 
     })
 })
+
+app.put('/mark-undo/:id', (req, res) => {
+    let id = req.params.id
+
+    readFile(database, 'utf8', (err, data) => {
+        if (err) {
+            res.json({ status: 'failed', message: 'Nepavyko perskaityti failo' })
+            return
+        }
+        //Issifruojame json informacija atgal i javascript masyva
+        let json = JSON.parse(data)
+
+        const jsonId = json.findIndex((el) => el.id == id)
+
+        if (jsonId === -1) {
+            res.json({ status: 'failed', message: 'Nepavyko rasti tokio elemento' })
+            return
+        }
+
+        json[jsonId].done = false;
+
+        let jsonString = JSON.stringify(json)
+
+        writeFile(database, jsonString, 'utf8', (err) => {
+            if (err) {
+                res.json({ status: 'failed', message: 'Nepavyko pabraukti failo' })
+            } else {
+                res.json({ status: 'success', message: 'Įrašas sėkmingai pabrauktas' })
+            }
+        })
+
+    })
+})
+
 
 
 app.listen(5001, () => {

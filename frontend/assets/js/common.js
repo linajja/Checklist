@@ -108,6 +108,7 @@ document.querySelector('#mass-delete').addEventListener('click', () => {
     })
         .then(resp => resp.json())
         .then(resp => {
+
             getData()
         })
 })

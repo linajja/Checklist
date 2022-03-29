@@ -35,7 +35,11 @@ body {
 }
 
 #todos ul > li {
+<<<<<<< HEAD
     padding: 20px 0;
+=======
+    padding: 7px 0;
+>>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
     border-bottom: 1px solid grey;
 }
 
@@ -46,7 +50,10 @@ body {
 .edit-mode {
     background: rgb(255, 245, 187);
 }
+<<<<<<< HEAD
 .btn {
     display: inline-block;
     float: right;
 }
+=======
+>>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f

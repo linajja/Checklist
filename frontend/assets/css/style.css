@@ -35,7 +35,7 @@ body {
 }
 
 #todos ul > li {
-    padding: 7px 0;
+    padding: 20px 0;
     border-bottom: 1px solid grey;
 }
 
@@ -45,4 +45,8 @@ body {
 
 .edit-mode {
     background: rgb(255, 245, 187);
+}
+.btn {
+    display: inline-block;
+    float: right;
 }

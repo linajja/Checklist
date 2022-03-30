@@ -1,9 +1,13 @@
+@import './font-awesome.min.css';
+
 body {
-    background: rgb(176, 219, 255);
+    background: url(https://th.bing.com/th/id/R.efa65387deb3a86f4e4090ac86474a71?rik=5bnx1LmgqkB1JA&riu=http%3a%2f%2fwww.pptgrounds.com%2fwp-content%2fuploads%2f2013%2f04%2fColored-School-Pencils-for-Children-Backgrounds.jpg&ehk=tC3PQykY999Mz7O8BGYIVVJ0FxqWJC4uN3R2BwVwSIk%3d&risl=&pid=ImgRaw&r=0);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .todo-container {
-    background: #fff;
+    background: rgb(255, 255, 253);
     max-width: 600px;
     margin-top: 4rem;
     padding: 2rem;
@@ -35,11 +39,7 @@ body {
 }
 
 #todos ul > li {
-<<<<<<< HEAD
     padding: 20px 0;
-=======
-    padding: 7px 0;
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
     border-bottom: 1px solid grey;
 }
 
@@ -50,10 +50,13 @@ body {
 .edit-mode {
     background: rgb(255, 245, 187);
 }
-<<<<<<< HEAD
+
 .btn {
-    display: inline-block;
+    display: block;
     float: right;
+    margin: 0;
+    padding: 0 3px;
 }
-=======
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
+.btn-primary {
+    margin-right: 5px;
+}

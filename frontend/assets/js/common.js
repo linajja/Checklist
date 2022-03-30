@@ -11,7 +11,7 @@ const messages = (message, status) => {
 
     setTimeout(() => {
         messageDiv.classList.remove('show')
-<<<<<<< HEAD
+
     }, 10000)
 }
 
@@ -26,9 +26,6 @@ const transferData = async (url, method = 'GET', data = {}) => {
         options.body = JSON.stringify(data)
     const resp = await fetch(url, options)
     return resp.json()
-=======
-    }, 8000)
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
 }
 
 const getData = () => {
@@ -44,12 +41,9 @@ const getData = () => {
                     html += `<li data-id="${value.id}">
                             <input type="checkbox" class="mass-delete" />
                             <a class="mark-done ${done}">${value.task}</a>
-                            <a class="btn btn-danger delete-todo">Trinti</a>
-                            <a class="btn btn-primary update-todo">Redaguoti</a>
-<<<<<<< HEAD
-                           
-=======
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
+                            <a class="btn btn-danger delete-todo">Delete</a>
+                            <a class="btn btn-primary update-todo">Edit</a>
+                            
                         </li>`
                 })
 
@@ -94,12 +88,11 @@ const getData = () => {
 
                     element.addEventListener('click', () => {
 
-<<<<<<< HEAD
+
                         transferData(url + '/' + id)
-=======
+
                         fetch(url + '/' + id)
                             .then(resp => resp.json())
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
                             .then(resp => {
                                 if (resp.status === 'success') {
                                     mainInput.value = resp.data.task
@@ -129,10 +122,6 @@ window.addEventListener('load', () => {
     getData()
 })
 
-<<<<<<< HEAD
-
-=======
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
 addButton.addEventListener('click', () => {
     let task = mainInput.value
     let mode = mainInput.getAttribute('data-mode')
@@ -141,7 +130,7 @@ addButton.addEventListener('click', () => {
 
     if (task === '') {
         let messages = document.querySelector('.messages')
-        messages.innerHTML = 'Įveskite užduotį'
+        messages.innerHTML = 'Add a new task'
         messages.classList.add('show')
         return
     }
@@ -152,9 +141,8 @@ addButton.addEventListener('click', () => {
         method = 'PUT'
     }
 
-<<<<<<< HEAD
     transferData(route, method, { task })
-=======
+
     fetch(route, {
         method: method,
         headers: {
@@ -163,7 +151,6 @@ addButton.addEventListener('click', () => {
         body: JSON.stringify({ task })
     })
         .then(resp => resp.json())
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
         .then(resp => {
             if (resp.status === 'success') {
                 getData()
@@ -185,9 +172,8 @@ document.querySelector('#mass-delete').addEventListener('click', () => {
         ids.push(element.parentElement.getAttribute('data-id'))
     })
 
-<<<<<<< HEAD
     transferData(url + '/mass-delete', 'DELETE', { ids })
-=======
+
     fetch(url + '/mass-delete', {
         method: 'DELETE',
         headers: {
@@ -196,15 +182,10 @@ document.querySelector('#mass-delete').addEventListener('click', () => {
         body: JSON.stringify({ ids })
     })
         .then(resp => resp.json())
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
         .then(resp => {
             if (resp.status === 'success') {
                 getData()
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> dd91d4c6c6f7e503a724166b4b015b57db69456f
             messages(resp.message, resp.status)
         })
 
